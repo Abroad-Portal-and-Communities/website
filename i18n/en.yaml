@@ -90,3 +90,9 @@ apcSurveySaving: "Saving…"
 apcSurveySaved: "Thanks — your response was saved to the database."
 apcSurveyNoDb: "Guides are shown below. Database not configured for this site build (add Supabase URL and Publishable key)."
 apcSurveySaveFailed: "Could not save to the database"
+
+# Social links
+apcSocialNavLabel: "Follow APC"
+apcSocialInstagram: "Instagram"
+apcSocialYoutube: "YouTube"
+apcSocialLinkedin: "LinkedIn"
