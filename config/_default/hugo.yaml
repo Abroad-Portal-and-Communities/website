@@ -1,6 +1,8 @@
-# Hugo configuration file
+# Site configuration
 title: APC Websites
 baseURL: https://abroad-portal-and-communities.github.io/website/
+
+disableHugoGeneratorInject: true
 
 # import hextra as module
 module:
@@ -31,11 +33,14 @@ menu:
     - name: Events
       pageRef: /events
       weight: 4
+    - name: Survey
+      pageRef: /survey
+      weight: 5
     - name: About
       pageRef: /about
-      weight: 5
-    - name: Search
       weight: 6
+    - name: Search
+      weight: 7
       params:
         type: search
 
@@ -59,7 +64,14 @@ params:
   footer:
     displayCopyright: true
     displayPoweredBy: false
+    copyright: "© Abroad Portal and Communities"
     width: wide
 
   editURL:
     enable: false
+
+  # Survey → Supabase. Set in config/development/hugo.yaml (local) or GitHub Actions secrets (production).
+  survey:
+    supabase:
+      url: ""
+      anonkey: ""

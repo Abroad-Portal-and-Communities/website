@@ -6,3 +6,196 @@
   margin-top: 1.5rem;
   margin-bottom: 4rem;
 }
+
+/* Community survey (home + /survey/) */
+.apc-survey {
+  margin: 2rem auto 4rem;
+  max-width: 48rem;
+  padding: 0 1rem;
+}
+
+.apc-survey__card {
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  border-radius: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  background: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+.apc-survey__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.apc-survey__desc {
+  margin: 0 0 1.25rem;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.apc-survey__fieldset {
+  border: 0;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.apc-survey__legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  padding: 0;
+}
+
+.apc-survey__hint {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.apc-survey__field {
+  margin-top: 0.75rem;
+}
+
+.apc-survey__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.apc-survey__input {
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  padding: 0.55rem 0.75rem;
+  width: 100%;
+  max-width: 24rem;
+  background: color-mix(in srgb, currentColor 3%, transparent);
+  color: inherit;
+}
+
+.apc-survey__input:focus {
+  outline: 2px solid #7c3aed;
+  outline-offset: 1px;
+}
+
+.apc-survey__options--jobs {
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+}
+
+.apc-survey__options {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+}
+
+.apc-survey__option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  line-height: 1.35;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s ease;
+}
+
+.apc-survey__option:hover {
+  background: color-mix(in srgb, currentColor 6%, transparent);
+}
+
+.apc-survey__option input {
+  accent-color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.apc-survey__submit {
+  background: #7c3aed;
+  border: 0;
+  border-radius: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1.25rem;
+}
+
+.apc-survey__submit:hover {
+  background: #6d28d9;
+}
+
+.apc-survey__results-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.apc-survey__results-summary {
+  margin: 0 0 1rem;
+  opacity: 0.9;
+}
+
+.apc-survey__result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.apc-survey__result-link {
+  border-radius: 0.5rem;
+  display: inline-block;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  background: #7c3aed;
+  color: #fff;
+}
+
+.apc-survey__result-link:hover {
+  background: #6d28d9;
+  color: #fff;
+}
+
+.apc-survey__result-link--secondary {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  color: inherit;
+}
+
+.apc-survey__result-link--secondary:hover {
+  background: color-mix(in srgb, currentColor 6%, transparent);
+}
+
+.apc-survey__reset {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.875rem;
+  opacity: 0.75;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.apc-survey__reset:hover {
+  opacity: 1;
+}
+
+.apc-survey__status {
+  font-size: 0.85rem;
+  margin: 0.75rem 0 0;
+  opacity: 0.85;
+}
+
+.apc-survey__status--error {
+  color: #b91c1c;
+}
+
+html.dark .apc-survey__status--error {
+  color: #f87171;
+}

@@ -60,6 +60,8 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
+          HUGO_PARAMS_SURVEY_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          HUGO_PARAMS_SURVEY_SUPABASE_ANONKEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
           BASE="${{ steps.pages.outputs.base_url }}"
           BASE="${BASE%/}"
