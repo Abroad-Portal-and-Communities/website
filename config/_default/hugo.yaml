@@ -1,5 +1,5 @@
 # Site configuration
-title: APC Websites
+title: APC Website
 baseURL: https://abroad-portal-and-communities.github.io/website/
 defaultContentLanguage: en
 
@@ -75,6 +75,19 @@ params:
 
   editURL:
     enable: false
+
+  # Giscus (GitHub Discussions). Enable per page with `comments: true` in front matter.
+  # IDs from https://giscus.app — repo must have Discussions on and the giscus GitHub App installed.
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: Abroad-Portal-and-Communities/website
+      repoId: R_kgDOSpQR4A
+      category: General
+      categoryId: DIC_kwDOSpQR4M4C99r1
+      mapping: pathname
+      reactionsEnabled: 1
 
   # Survey → Supabase. Set in config/development/hugo.yaml (local) or GitHub Actions secrets (production).
   survey:

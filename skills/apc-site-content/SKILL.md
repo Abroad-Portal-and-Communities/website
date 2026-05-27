@@ -55,18 +55,19 @@ Tags connect events to docs pages and enable `/events/?tag=<slug>` filtering.
 | `backend` | `/docs/career-plan/developer/backend/` |
 | `working-abroad` | Working abroad section |
 | `eu`, `us`, `asia` | Regional guides under `content/docs/working-abroad/` |
+| `germany`, `lithuania` | EU country guides under `content/docs/working-abroad/eu/countries/` |
 
 Use the **page slug** (last path segment), not display titles. Avoid broad tags like `developer` unless the session applies to all developer roles.
 
 ### After adding an event
 
 - Confirm register vs YouTube: upcoming → `register` only; past → `youtube` only.
-- Set real Google Form (or other) URLs in `data/events.yaml` and `data/events.id.yaml`.
+- Set real Google Form (or other) URLs in `data/events.yaml` and `data/id/events.yaml`.
 - For registration, use **[Luma](https://lu.ma)** (recommended): create event → paste public URL into `register`. See **[docs/event-registration.md](../../docs/event-registration.md)**.
 
 ## Indonesian translations
 
-When adding or updating English pages, add or update the Indonesian sibling **`*.id.md`** in the same folder (e.g. `content/docs/foo/_index.id.md` next to `_index.md`). Mirror front matter (`title`, `weight`, `prev`/`next`) and translate body copy. Add menu/UI strings to **`i18n/id.yaml`** if needed. For events or survey labels, edit **`data/events.id.yaml`** or **`data/survey.id.yaml`**.
+When adding or updating English pages, add or update the Indonesian sibling **`*.id.md`** in the same folder (e.g. `content/docs/foo/_index.id.md` next to `_index.md`). Mirror front matter (`title`, `weight`, `prev`/`next`) and translate body copy. Add menu/UI strings to **`i18n/id.yaml`** if needed. For events or survey labels in Indonesian, edit **`data/id/events.yaml`** or **`data/id/survey.yaml`** (form UI strings use **`i18n/id.yaml`** via `T()`).
 
 ## Add a doc page (guide / “post”)
 
@@ -86,6 +87,9 @@ next: docs/path/to/next
 
 - Career role: `content/docs/career-plan/<track>/<role>/_index.md`
 - Working abroad region: `content/docs/working-abroad/<region>/_index.md`
+- Europe topic: `content/docs/working-abroad/eu/legal-and-documents/_index.md`
+- Europe country: `content/docs/working-abroad/eu/countries/<slug>/_index.md` (+ `_index.id.md`); list on `eu/countries/_index.md` and link from `eu/legal-and-documents/`
+- Page comments: set `comments: true` in front matter (Giscus — see `docs/comments.md`)
 - New top-level section: add `_index.md` + entry in parent `_index.md` table if applicable
 
 ### Shortcode links (`card`, `hero-button`, `feature-card`)
