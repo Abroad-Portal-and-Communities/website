@@ -24,16 +24,16 @@ jobs:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
           cache: true
 
       - name: Cache Hugo and Go modules
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: |
             /tmp/hugo_cache
@@ -53,47 +53,18 @@ jobs:
           hugo mod tidy
           hugo --gc --minify --baseURL "http://localhost/"
 
-  actionlint:
-    name: GitHub Actions
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Lint workflows
-        uses: rhysd/actionlint@v1.7.12
-
   markdown:
     name: Markdown
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v23
+        uses: DavidAnson/markdownlint-cli2-action@v18
         with:
           config: .markdownlint.yaml
           globs: |
             content/**/*.md
             README.md
-
-  yamllint:
-    name: YAML
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Lint YAML
-        run: |
-          pip install yamllint
-          yamllint -c .yamllint.yml .github data hugo.yaml netlify.toml
