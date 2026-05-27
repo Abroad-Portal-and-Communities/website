@@ -1,8 +1,9 @@
+# Registration: same Luma URL as events.yaml, or a separate ID Luma event — see docs/event-registration.md
 upcoming:
-  - title: "Sesi Berbagi: DevOps"
-    date: 2026-08-20
-    description: "Pipeline CI/CD, infrastruktur sebagai kode, dan observabilitas untuk tim modern."
-    register: "https://forms.gle/REPLACE_WITH_DEVOPS_REGISTRATION"
+  - title: "Webinar: DevOps & SRE Foundations"
+    date: 2026-05-30
+    description: "Dari dasar hingga sistem yang scalable — Sabtu 30 Mei 2026, pukul 14.00 WIB via Zoom. Narasumber Rhevin Fardhika (System Engineer, Hostinger, Kaunas, Lithuania)."
+    register: "https://docs.google.com/forms/d/e/1FAIpQLSeu589QbJDGHj7Ck10Y9M010ZLUfAuZAoJpCrogvjL3nUphqw/viewform"
     tags:
       - devops
 

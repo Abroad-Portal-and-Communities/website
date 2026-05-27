@@ -68,6 +68,11 @@ params:
     copyright: "© Abroad Portal and Communities"
     width: wide
 
+  social:
+    instagram: https://www.instagram.com/abroadportalcommunity/
+    youtube: https://www.youtube.com/@AbroadPortalCommunity
+    linkedin: https://www.linkedin.com/company/abroad-portal-communities/
+
   editURL:
     enable: false
 
