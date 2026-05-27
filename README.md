@@ -41,7 +41,7 @@ Uses GitHub’s official [Pages Actions](https://docs.github.com/en/pages/gettin
 |----------|---------|--------|
 | [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build and Markdown lint (skips jobs when unrelated files change) |
 | [conventional-pr.yaml](.github/workflows/conventional-pr.yaml) | Pull request | Validates Conventional Commits PR title |
-| [pages.yaml](.github/workflows/pages.yaml) | Push to `main`, pull request | Production deploy and PR preview deploy |
+| [pages.yaml](.github/workflows/pages.yaml) | Push to `main`, pull request | Production deploy on `main`; PRs run build only (validates Hugo) |
 
 ### One-time setup
 
@@ -55,9 +55,11 @@ Uses GitHub’s official [Pages Actions](https://docs.github.com/en/pages/gettin
 | Environment | URL |
 |-------------|-----|
 | Production | [abroad-portal-and-communities.github.io/website/](https://abroad-portal-and-communities.github.io/website/) |
-| PR preview | Shown in the PR **Deployments** check (GitHub-generated preview URL) |
+| PR preview | Not deployed by default (see note below) |
 
-`configure-pages` sets Hugo’s `baseURL` automatically for production and previews.
+`configure-pages` sets Hugo’s `baseURL` automatically on deploy.
+
+**PR deploys:** The `github-pages` environment is limited to `main` and `gh-pages`. Pull requests only run the **build** job so CI passes. To enable PR preview deploys, set **Settings → Environments → github-pages → Deployment branches** to **All branches**.
 
 ### PR titles (Conventional Commits)
 

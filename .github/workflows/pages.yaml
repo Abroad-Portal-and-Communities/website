@@ -73,6 +73,9 @@ jobs:
 
   deploy:
     needs: build
+    # github-pages environment only allows main/gh-pages by default; PR branches fail deploy.
+    # Build still runs on pull_request to verify Hugo. Merge to main for production deploy.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     environment:
