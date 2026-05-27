@@ -12,7 +12,7 @@ Software engineering career paths and specializations.
 ## Roles
 
 | Role | Focus |
-|------|--------|
+| --- | --- |
 | [Backend Developer](/docs/career-plan/developer/backend/) | APIs, databases, services, and server-side logic |
 | [Frontend Developer](/docs/career-plan/developer/frontend/) | UI, accessibility, and client-side applications |
 | [Full-Stack Developer](/docs/career-plan/developer/full-stack/) | End-to-end features across frontend and backend |

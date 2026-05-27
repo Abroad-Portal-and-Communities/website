@@ -1,6 +1,7 @@
 # Site configuration
 title: APC Websites
 baseURL: https://abroad-portal-and-communities.github.io/website/
+defaultContentLanguage: en
 
 disableHugoGeneratorInject: true
 
@@ -21,37 +22,37 @@ markup:
 
 menu:
   main:
-    - name: Docs
+    - identifier: docs
+      name: Docs
       pageRef: /docs
       weight: 1
-    - name: Working Abroad
+    - identifier: workingAbroad
+      name: Working Abroad
       pageRef: /docs/working-abroad
       weight: 2
-    - name: Career Plan
+    - identifier: careerPlan
+      name: Career Plan
       pageRef: /docs/career-plan
       weight: 3
-    - name: Events
+    - identifier: events
+      name: Events
       pageRef: /events
       weight: 4
-    - name: Survey
+    - identifier: survey
+      name: Survey
       pageRef: /survey
       weight: 5
-    - name: About
+    - identifier: about
+      name: About
       pageRef: /about
       weight: 6
-    - name: Search
+    - identifier: search
+      name: Search
       weight: 7
       params:
         type: search
 
 params:
-  description: APC community documentation, events, and sharing sessions.
-
-  banner:
-    key: welcome
-    message: |
-      Welcome — explore [Career Plan](/docs/career-plan/), [Working Abroad](/docs/working-abroad/), or [events](/events/).
-
   navbar:
     displayTitle: true
     displayLogo: false

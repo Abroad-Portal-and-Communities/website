@@ -1,6 +1,6 @@
 {{- $events := .events -}}
 {{- if not $events -}}
-  <p class="hx:opacity-70 hx:italic">No events listed yet.</p>
+  <p class="hx:opacity-70 hx:italic">{{ T "apcNoEventsYet" }}</p>
 {{- else -}}
   <div class="hx:grid hx:gap-4 hx:mt-4 apc-events-grid">
     {{- range $events -}}
@@ -14,7 +14,7 @@
         <h3 class="hx:text-xl hx:font-semibold hx:tracking-tight">{{ .title }}</h3>
         {{- partial "event-tags.html" (dict "event" .) -}}
         <p class="hx:mt-2 hx:text-sm hx:opacity-70">
-          <span class="hx:font-medium">Date:</span>
+          <span class="hx:font-medium">{{ T "apcDateLabel" }}</span>
           {{ .date | time.Format ":date_long" }}
         </p>
         <p class="hx:mt-3 hx:leading-7 hx:opacity-90">{{ .description }}</p>

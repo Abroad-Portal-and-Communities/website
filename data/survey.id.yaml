@@ -1,0 +1,83 @@
+title: Ceritakan tujuan Anda
+description: Jawab beberapa pertanyaan dan kami akan menyarankan panduan dari dokumentasi kami. Kolom opsional membantu kami meningkatkan sumber daya komunitas.
+submit_label: Tampilkan panduan saya
+
+statuses:
+  - id: working
+    label: Bekerja (karyawan)
+  - id: college
+    label: Kuliah
+  - id: senior-high
+    label: SMA / SMK
+
+continents:
+  - id: asia
+    label: Asia
+    link: docs/working-abroad/asia/
+  - id: eu
+    label: Eropa
+    link: docs/working-abroad/eu/
+  - id: america
+    label: Amerika (AS, Kanada, Amerika Latin)
+    link: docs/working-abroad/us/
+  - id: other
+    label: Afrika, Oseania & wilayah lain
+    link: docs/working-abroad/other/
+
+jobs:
+  - id: backend-developer
+    label: Pengembang Backend
+    link: docs/career-plan/developer/backend/
+  - id: frontend-developer
+    label: Pengembang Frontend
+    link: docs/career-plan/developer/frontend/
+  - id: fullstack-developer
+    label: Pengembang Full-Stack
+    link: docs/career-plan/developer/full-stack/
+  - id: mobile-developer
+    label: Pengembang Mobile
+    link: docs/career-plan/developer/mobile/
+  - id: devops
+    label: Insinyur DevOps
+    link: docs/career-plan/developer/devops/
+  - id: network-engineer
+    label: Insinyur Jaringan
+    link: docs/career-plan/network/network-engineer/
+  - id: network-administrator
+    label: Administrator Jaringan
+    link: docs/career-plan/network/network-administrator/
+  - id: network-security
+    label: Insinyur Keamanan Jaringan
+    link: docs/career-plan/network/network-security/
+  - id: data-pipeline
+    label: Insinyur Data Pipeline
+    link: docs/career-plan/data-engineer/pipeline/
+  - id: analytics-engineer
+    label: Insinyur Analytics
+    link: docs/career-plan/data-engineer/analytics/
+  - id: ml-engineer
+    label: Insinyur ML
+    link: docs/career-plan/data-engineer/ml-engineer/
+  - id: other-job
+    label: Peran lain (jelaskan di bawah)
+    link: docs/career-plan/
+
+looking_for:
+  - id: living-expense
+    label: Biaya hidup & biaya tempat tinggal
+    link: docs/working-abroad/starter/
+  - id: career-plan
+    label: Rencana karier & peta peran
+    link: docs/career-plan/
+  - id: permits
+    label: Visa, izin & persyaratan hukum
+    link: docs/working-abroad/starter/
+  - id: timeline
+    label: Linimasa & langkah bekerja di luar negeri
+    link: docs/working-abroad/starter/
+  - id: culture
+    label: Budaya & norma tempat kerja
+    link: docs/working-abroad/starter/
+  - id: events
+    label: Acara komunitas & sesi berbagi
+    link: events/

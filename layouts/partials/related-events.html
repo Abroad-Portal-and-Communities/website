@@ -54,10 +54,10 @@
 {{- if gt (len $related) 0 -}}
 {{- $primaryTag := index $tags 0 -}}
 <section class="apc-related-events" aria-labelledby="apc-related-events-title">
-  <h2 id="apc-related-events-title" class="apc-related-events__title">Related sharing sessions</h2>
+  <h2 id="apc-related-events-title" class="apc-related-events__title">{{ T "apcRelatedSessions" }}</h2>
   <p class="apc-related-events__intro">
-    Recordings and upcoming talks that match this topic.
-    <a href="{{ `/events/` | relURL }}?tag={{ $primaryTag }}">Browse all on Events</a>
+    {{ T "apcRelatedIntro" }}
+    <a href="{{ partial "events-page-url.html" (dict "tag" $primaryTag) }}">{{ T "apcBrowseEvents" }}</a>
   </p>
   <ul class="apc-related-events__list">
     {{- range $related -}}
@@ -65,9 +65,9 @@
       <li class="apc-related-events__item">
         <h3 class="apc-related-events__event-title">{{ $e.title }}</h3>
         {{- if eq .when "upcoming" -}}
-          <span class="apc-related-events__badge">Upcoming</span>
+          <span class="apc-related-events__badge">{{ T "apcUpcoming" }}</span>
         {{- else -}}
-          <span class="apc-related-events__badge apc-related-events__badge--past">Past</span>
+          <span class="apc-related-events__badge apc-related-events__badge--past">{{ T "apcPast" }}</span>
         {{- end -}}
         <p class="apc-related-events__meta">
           <time datetime="{{ $e.date }}">{{ $e.date | time.Format ":date_long" }}</time>

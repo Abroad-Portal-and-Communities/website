@@ -14,4 +14,3 @@ Working in or with European teams.
 - Contract types: permanent, fixed-term, and contractor
 - Work–life balance and statutory leave norms
 - Cross-border remote work within the EU
-

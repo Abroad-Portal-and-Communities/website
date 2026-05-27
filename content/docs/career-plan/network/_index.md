@@ -12,7 +12,7 @@ Career paths focused on networks, infrastructure, and connectivity.
 ## Roles
 
 | Role | Focus |
-|------|--------|
+| --- | --- |
 | [Network Engineer](/docs/career-plan/network/network-engineer/) | Design, routing, switching, and core network services |
 | [Network Administrator](/docs/career-plan/network/network-administrator/) | Day-to-day operations, monitoring, and user connectivity |
 | [Network Security](/docs/career-plan/network/network-security/) | Firewalls, access control, and secure network design |
