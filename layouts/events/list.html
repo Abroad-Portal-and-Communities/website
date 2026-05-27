@@ -13,12 +13,19 @@
       {{ end }}
 
       <div class="hx:mx-auto hx:max-w-3xl hx:mt-10">
+        <p id="apc-events-filter-banner" class="apc-events-filter-banner" hidden>
+          <span data-filter-label></span>
+          <a data-filter-clear href="{{ `/events/` | relURL }}">Show all events</a>
+        </p>
+
         <h2 class="hx:text-2xl hx:font-bold hx:tracking-tight">Upcoming Events</h2>
-        {{ partial "events-list.html" (dict "events" hugo.Data.events.upcoming) }}
+        {{ partial "events-list.html" (dict "events" site.Data.events.upcoming "when" "upcoming") }}
 
         <h2 class="hx:text-2xl hx:font-bold hx:tracking-tight hx:mt-12">Past Events</h2>
-        {{ partial "events-list.html" (dict "events" hugo.Data.events.past) }}
+        {{ partial "events-list.html" (dict "events" site.Data.events.past "when" "past") }}
       </div>
+      {{ $js := resources.Get "js/events-filter.js" | minify | fingerprint }}
+      <script src="{{ $js.RelPermalink }}" defer></script>
     </main>
   </div>
 {{ end }}

@@ -1,0 +1,12 @@
+{{- /* Renders tag pills for an event; links filter the events page. */ -}}
+{{- $event := .event -}}
+{{- $tags := $event.tags | default slice -}}
+{{- if $tags -}}
+  <ul class="apc-event-tags" aria-label="Topics">
+    {{- range $tags -}}
+      <li>
+        <a class="apc-event-tags__pill" href="{{ `/events/` | relURL }}?tag={{ . }}">{{ . | humanize }}</a>
+      </li>
+    {{- end -}}
+  </ul>
+{{- end -}}
