@@ -1,0 +1,6 @@
+---
+# Hugo content uses front matter and shortcodes
+default: true
+MD013: false # line length
+MD033: false # inline HTML / shortcodes
+MD041: false # first line must be heading (conflicts with front matter)

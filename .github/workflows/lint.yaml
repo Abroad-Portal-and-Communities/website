@@ -1,0 +1,99 @@
+name: Lint
+
+on:
+  pull_request:
+    paths-ignore:
+      - "public/**"
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "public/**"
+
+permissions:
+  contents: read
+
+env:
+  HUGO_VERSION: "0.162.0"
+
+jobs:
+  hugo:
+    name: Hugo build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      HUGO_CACHEDIR: /tmp/hugo_cache
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Cache Hugo and Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            /tmp/hugo_cache
+            ${{ env.GOMODCACHE }}
+          key: ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-${{ hashFiles('go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Build site
+        run: |
+          hugo mod tidy
+          hugo --gc --minify --baseURL "http://localhost/"
+
+  actionlint:
+    name: GitHub Actions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint workflows
+        uses: rhysd/actionlint@v1
+
+  markdown:
+    name: Markdown
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          config: .markdownlint.yaml
+          globs: |
+            content/**/*.md
+            README.md
+
+  yamllint:
+    name: YAML
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint YAML
+        uses: ibi/action-yamllint@v1
+        with:
+          config_file: .yamllint.yml
+          file_or_dir: |
+            .github
+            data
+            hugo.yaml
+            netlify.toml
