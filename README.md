@@ -15,7 +15,7 @@ hugo mod tidy
 hugo server --disableFastRender -p 1313
 ```
 
-Open http://localhost:1313/
+Open [http://localhost:1313/](http://localhost:1313/)
 
 ## Build
 
@@ -40,6 +40,7 @@ Production and PR previews both publish to the **`gh-pages`** branch.
 | Workflow | Trigger | Result |
 |----------|---------|--------|
 | [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build, Markdown, YAML, and Actions lint |
+| [conventional-pr.yaml](.github/workflows/conventional-pr.yaml) | Pull request | Validates Conventional Commits PR title |
 | [pages.yaml](.github/workflows/pages.yaml) | Push to `main` | Production site |
 | [preview.yaml](.github/workflows/preview.yaml) | Pull request | Preview URL posted as a PR comment |
 
@@ -57,10 +58,20 @@ Production and PR previews both publish to the **`gh-pages`** branch.
 
 | Environment | URL |
 |-------------|-----|
-| Production | https://abroad-portal-and-communities.github.io/websites/ |
-| PR preview | https://abroad-portal-and-communities.github.io/websites/pr-preview/pr-&lt;number&gt;/ |
+| Production | [abroad-portal-and-communities.github.io/websites/](https://abroad-portal-and-communities.github.io/websites/) |
+| PR preview | `.../websites/pr-preview/pr-<number>/` |
 
 Each pull request gets a sticky comment with the preview link (and QR code). Previews are removed when the PR is closed.
+
+### PR titles (Conventional Commits)
+
+PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat: add events page`
+- `fix: broken homepage link`
+- `docs: update README`
+
+The **Conventional PR** workflow fails if the title does not match. See [.github/pull_request_template.md](.github/pull_request_template.md).
 
 ### Custom domain (optional)
 
