@@ -1,6 +1,18 @@
 (function () {
   const STORAGE_KEY = "apc-survey-v2";
 
+  function i18n(key, fallback) {
+    const bag = window.__APC_SURVEY_I18N || {};
+    return bag[key] || fallback;
+  }
+
+  function format(template) {
+    const args = Array.prototype.slice.call(arguments, 1);
+    return template.replace(/%s/g, function () {
+      return args.length ? String(args.shift()) : "";
+    });
+  }
+
   function ready(fn) {
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
@@ -119,12 +131,12 @@
     const links = [];
 
     links.push({
-      label: "Working abroad: " + data.continent.label,
+      label: format(i18n("recWorkingAbroad", "Working abroad: %s"), data.continent.label),
       link: data.continent.link,
     });
 
     links.push({
-      label: "Career guide: " + data.jobLabel,
+      label: format(i18n("recCareer", "Career guide: %s"), data.jobLabel),
       link: data.job.link,
     });
 
@@ -217,12 +229,17 @@
 
   function renderResults(data, summaryEl, listEl) {
     const parts = [
-      "Status: " + data.status.label + " (" + data.statusDetail + ")",
-      "Target: " + data.continent.label + " — " + data.country,
-      "Role: " + data.jobLabel,
-      "Topics: " + data.lookingFor.map(function (x) {
-        return x.label;
-      }).join(", "),
+      format(i18n("summaryStatus", "Status: %s (%s)"), data.status.label, data.statusDetail),
+      format(i18n("summaryTarget", "Target: %s — %s"), data.continent.label, data.country),
+      format(i18n("summaryRole", "Role: %s"), data.jobLabel),
+      format(
+        i18n("summaryTopics", "Topics: %s"),
+        data.lookingFor
+          .map(function (x) {
+            return x.label;
+          })
+          .join(", ")
+      ),
     ];
     summaryEl.textContent = parts.join(" · ");
 
@@ -339,12 +356,12 @@
       e.preventDefault();
       const data = collectAnswers(form);
       if (!data) {
-        setStatus(status, "Please complete all required fields.", true);
+        setStatus(status, i18n("errorRequired", "Please complete all required fields."), true);
         return;
       }
 
       if (submitBtn) submitBtn.disabled = true;
-      setStatus(status, "Saving…", false);
+      setStatus(status, i18n("saving", "Saving…"), false);
 
       const hasDb = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
 
@@ -352,11 +369,18 @@
         .then(function (mode) {
           showResults(form, results, data, summary, list);
           if (mode === "saved") {
-            setStatus(status, "Thanks — your response was saved to the database.", false);
+            setStatus(
+              status,
+              i18n("saved", "Thanks — your response was saved to the database."),
+              false
+            );
           } else if (!hasDb) {
             setStatus(
               status,
-              "Guides are shown below. Database not configured for this site build (add Supabase URL and Publishable key).",
+              i18n(
+                "noDb",
+                "Guides are shown below. Database not configured for this site build (add Supabase URL and Publishable key)."
+              ),
               true
             );
           }
@@ -365,7 +389,7 @@
           showResults(form, results, data, summary, list);
           setStatus(
             status,
-            "Could not save to the database" +
+            i18n("saveFailed", "Could not save to the database") +
               (err && err.message ? " (" + err.message + ")." : ".") +
               " Check Supabase schema (migration-upgrade-to-v2.sql) and table RLS.",
             true

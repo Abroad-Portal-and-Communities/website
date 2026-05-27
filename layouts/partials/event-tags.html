@@ -5,7 +5,7 @@
   <ul class="apc-event-tags" aria-label="Topics">
     {{- range $tags -}}
       <li>
-        <a class="apc-event-tags__pill" href="{{ `/events/` | relURL }}?tag={{ . }}">{{ . | humanize }}</a>
+        <a class="apc-event-tags__pill" href="{{ partial "events-page-url.html" (dict "tag" .) }}">{{ . | humanize }}</a>
       </li>
     {{- end -}}
   </ul>
