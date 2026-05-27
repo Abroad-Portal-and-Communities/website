@@ -1,0 +1,13 @@
+{{- /* Events index URL with optional ?tag= (respects GitHub Pages /website/ base). */ -}}
+{{- $tag := .tag | default "" -}}
+{{- $url := "" -}}
+{{- with site.GetPage "/events" -}}
+  {{- $url = .RelPermalink -}}
+{{- else -}}
+  {{- $url = "events/" | relLangURL -}}
+{{- end -}}
+{{- if $tag -}}
+  {{- printf "%s?tag=%s" $url $tag -}}
+{{- else -}}
+  {{- $url -}}
+{{- end -}}

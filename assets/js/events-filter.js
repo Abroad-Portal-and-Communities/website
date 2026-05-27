@@ -21,10 +21,10 @@
   var label = banner.querySelector("[data-filter-label]");
   var clear = banner.querySelector("[data-filter-clear]");
   if (label) {
-    label.textContent =
-      visible === 0
-        ? 'No events tagged "' + tag.replace(/-/g, " ") + '".'
-        : 'Showing events tagged "' + tag.replace(/-/g, " ") + '".';
+    var showing = banner.getAttribute("data-filter-showing") || 'Showing events tagged "%s".';
+    var none = banner.getAttribute("data-filter-none") || 'No events tagged "%s".';
+    var tagLabel = tag.replace(/-/g, " ");
+    label.textContent = (visible === 0 ? none : showing).replace("%s", tagLabel);
   }
   if (clear) {
     clear.href = window.location.pathname;
