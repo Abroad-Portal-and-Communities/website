@@ -90,3 +90,9 @@ apcSurveySaving: "Menyimpan…"
 apcSurveySaved: "Terima kasih — respons Anda tersimpan di database."
 apcSurveyNoDb: "Panduan ditampilkan di bawah. Database belum dikonfigurasi untuk build situs ini (tambahkan URL Supabase dan Publishable key)."
 apcSurveySaveFailed: "Tidak dapat menyimpan ke database"
+
+# Social links
+apcSocialNavLabel: "Ikuti APC"
+apcSocialInstagram: "Instagram"
+apcSocialYoutube: "YouTube"
+apcSocialLinkedin: "LinkedIn"

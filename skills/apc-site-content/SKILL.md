@@ -61,7 +61,8 @@ Use the **page slug** (last path segment), not display titles. Avoid broad tags 
 ### After adding an event
 
 - Confirm register vs YouTube: upcoming → `register` only; past → `youtube` only.
-- Replace placeholder `forms.gle/REPLACE_...` URLs with real registration links.
+- Set real Google Form (or other) URLs in `data/events.yaml` and `data/events.id.yaml`.
+- For registration, use **[Luma](https://lu.ma)** (recommended): create event → paste public URL into `register`. See **[docs/event-registration.md](../../docs/event-registration.md)**.
 
 ## Indonesian translations
 
@@ -86,6 +87,13 @@ next: docs/path/to/next
 - Career role: `content/docs/career-plan/<track>/<role>/_index.md`
 - Working abroad region: `content/docs/working-abroad/<region>/_index.md`
 - New top-level section: add `_index.md` + entry in parent `_index.md` table if applicable
+
+### Shortcode links (`card`, `hero-button`, `feature-card`)
+
+Use **root-relative** paths with a leading `/` so links work from any page (GitHub Pages subpath `/website/`):
+
+- Good: `link="/docs/working-abroad/starter"`, `link="/events"`
+- Bad: `link="docs/working-abroad/starter"` (from `/docs/` becomes `/docs/docs/...` → 404)
 
 ### Markdown rules
 
