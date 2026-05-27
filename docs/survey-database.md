@@ -22,6 +22,40 @@ Survey answers can be stored in a **Supabase** (PostgreSQL) database. The site s
 
 Supabase **Table Editor → `survey_responses`**. Main columns: `status_*`, `continent_*`, `country_text`, `job_*`, `job_other_text`, `looking_for` (JSON), `page_path`, `created_at`.
 
+Use **Export → CSV** in the Table Editor to download all rows after people submit the survey.
+
+## Totals and breakdowns (SQL)
+
+In **SQL Editor**, run queries from [`supabase/queries-reporting.sql`](../supabase/queries-reporting.sql). Examples:
+
+```sql
+-- How many people submitted?
+select count(*) as total_responses from public.survey_responses;
+
+-- By status, region, job
+select status_label, count(*) from public.survey_responses group by 1 order by 2 desc;
+select continent_label, count(*) from public.survey_responses group by 1 order by 2 desc;
+select job_label, count(*) from public.survey_responses group by 1 order by 2 desc;
+```
+
+Optional: run [`supabase/views-powerbi.sql`](../supabase/views-powerbi.sql) first for the `survey_responses_reporting` view.
+
+## Export JSON (maintainers, service role)
+
+The public site **cannot** read responses (RLS allows `INSERT` only). To pull all rows from your machine:
+
+```bash
+export SUPABASE_URL="https://YOUR_REF.supabase.co"
+export SUPABASE_SERVICE_ROLE_KEY="..."   # Settings → API → service_role (secret)
+./scripts/export-survey-responses.sh > survey-export.json
+```
+
+Never put the service role key in Hugo config, git, or GitHub Actions for the static site.
+
+## Without Supabase
+
+If Supabase is not configured, answers stay in each visitor’s browser (`localStorage` only). There is **no central total** until you enable database saves.
+
 ## Power BI
 
 Connect Power BI to Supabase PostgreSQL and query `survey_responses` (or the `survey_responses_reporting` view). See [power-bi-survey.md](power-bi-survey.md).

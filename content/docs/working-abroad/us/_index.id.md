@@ -2,7 +2,7 @@
 title: Amerika Serikat
 type: docs
 weight: 3
-prev: docs/working-abroad/eu
+prev: docs/working-abroad/eu/countries/lithuania
 next: docs/working-abroad/asia
 ---
 

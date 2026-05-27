@@ -1,5 +1,5 @@
 ---
-title: APC Websites
+title: APC Website
 layout: hextra-home
 ---
 

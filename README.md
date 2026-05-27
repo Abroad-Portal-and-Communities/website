@@ -1,4 +1,4 @@
-# APC Websites
+# APC Website
 
 Static site for the Abroad Portal and Communities documentation and events.
 

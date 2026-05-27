@@ -1,0 +1,9 @@
+{{- /* Returns language-specific data file (e.g. survey, events) with English fallback. */ -}}
+{{- $name := .name -}}
+{{- $data := index hugo.Data $name | default dict -}}
+{{- with index hugo.Data site.Language.Lang -}}
+  {{- with index . $name -}}
+    {{- $data = . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $data -}}

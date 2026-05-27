@@ -20,7 +20,7 @@
   {{- return -}}
 {{- end -}}
 
-{{- $eventsData := site.Data.events | default dict -}}
+{{- $eventsData := partial "apc-lang-data.html" (dict "name" "events") | default dict -}}
 {{- $upcoming := $eventsData.upcoming | default slice -}}
 {{- $past := $eventsData.past | default slice -}}
 {{- $related := slice -}}
