@@ -60,10 +60,16 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+        run: |
+          BASE="${{ steps.pages.outputs.base_url }}"
+          BASE="${BASE%/}"
+          echo "Building with baseURL: ${BASE}/"
+          hugo --gc --minify --baseURL "${BASE}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
   deploy:
     needs: build
