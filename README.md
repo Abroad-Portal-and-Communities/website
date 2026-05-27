@@ -39,7 +39,7 @@ Production and PR previews both publish to the **`gh-pages`** branch.
 
 | Workflow | Trigger | Result |
 |----------|---------|--------|
-| [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build, Markdown, YAML, and Actions lint |
+| [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build and Markdown lint |
 | [conventional-pr.yaml](.github/workflows/conventional-pr.yaml) | Pull request | Validates Conventional Commits PR title |
 | [pages.yaml](.github/workflows/pages.yaml) | Push to `main` | Production site |
 | [preview.yaml](.github/workflows/preview.yaml) | Pull request | Preview URL posted as a PR comment |
