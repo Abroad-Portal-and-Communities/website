@@ -56,7 +56,7 @@ hugo mod tidy
 Uses GitHub’s official [Pages Actions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow) (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
 
 | Workflow | Trigger | Result |
-|----------|---------|--------|
+| --- | --- | --- |
 | [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build and Markdown lint (skips jobs when unrelated files change) |
 | [conventional-pr.yaml](.github/workflows/conventional-pr.yaml) | Pull request | Validates Conventional Commits PR title |
 | [pages.yaml](.github/workflows/pages.yaml) | Push to `main`, pull request | Production deploy on `main`; PRs run build only (validates Hugo) |
@@ -71,7 +71,7 @@ Uses GitHub’s official [Pages Actions](https://docs.github.com/en/pages/gettin
 ### URLs
 
 | Environment | URL |
-|-------------|-----|
+| --- | --- |
 | Production | [abroad-portal-and-communities.github.io/website/](https://abroad-portal-and-communities.github.io/website/) |
 | PR preview | Not deployed by default (see note below) |
 

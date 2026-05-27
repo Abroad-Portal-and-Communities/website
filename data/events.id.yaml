@@ -1,0 +1,16 @@
+upcoming:
+  - title: "Sesi Berbagi: DevOps"
+    date: 2026-08-20
+    description: "Pipeline CI/CD, infrastruktur sebagai kode, dan observabilitas untuk tim modern."
+    register: "https://forms.gle/REPLACE_WITH_DEVOPS_REGISTRATION"
+    tags:
+      - devops
+
+past:
+  - title: "Sesi Berbagi: Bekerja di Luar Negeri"
+    date: 2026-03-15
+    description: "Cerita dan tips praktis bekerja di luar negeri — visa, budaya, dan kolaborasi lintas wilayah."
+    youtube: "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+    tags:
+      - working-abroad
+      - eu

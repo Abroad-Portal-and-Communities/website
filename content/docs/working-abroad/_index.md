@@ -12,7 +12,7 @@ Overview of guides for working abroad, organized by region.
 ## Sections
 
 | Section | Description |
-|---------|-------------|
+| --- | --- |
 | [Starter](/docs/working-abroad/starter/) | First steps before you move or start a remote role abroad |
 | [Europe](/docs/working-abroad/eu/) | EU work culture, contracts, and collaboration |
 | [United States](/docs/working-abroad/us/) | US hiring, time zones, and workplace norms |
