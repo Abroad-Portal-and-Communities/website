@@ -1,29 +1,25 @@
-{{- $survey := site.Data.survey -}}
+{{- $survey := partial "apc-lang-data.html" (dict "name" "survey") -}}
 {{- $supabase := site.Params.survey.supabase | default dict -}}
 {{- $supabaseUrl := index $supabase "url" | default "" | strings.TrimSpace -}}
 {{- $supabaseKey := index $supabase "anonkey" | default (index $supabase "anonKey") | default "" | strings.TrimSpace -}}
 <section class="apc-survey" id="community-survey" aria-labelledby="apc-survey-title">
-<script>
-  window.__APC_SURVEY_I18N = {
-    recWorkingAbroad: {{ T "apcSurveyRecWorkingAbroad" | jsonify }},
-    recCareer: {{ T "apcSurveyRecCareer" | jsonify }},
-    summaryStatus: {{ T "apcSurveySummaryStatus" | jsonify }},
-    summaryTarget: {{ T "apcSurveySummaryTarget" | jsonify }},
-    summaryRole: {{ T "apcSurveySummaryRole" | jsonify }},
-    summaryTopics: {{ T "apcSurveySummaryTopics" | jsonify }},
-    errorRequired: {{ T "apcSurveyErrorRequired" | jsonify }},
-    saving: {{ T "apcSurveySaving" | jsonify }},
-    saved: {{ T "apcSurveySaved" | jsonify }},
-    noDb: {{ T "apcSurveyNoDb" | jsonify }},
-    saveFailed: {{ T "apcSurveySaveFailed" | jsonify }}
-  };
-  {{- if and $supabaseUrl $supabaseKey }}
-  window.__APC_SURVEY_CONFIG = {
-    supabaseUrl: {{ $supabaseUrl | jsonify }},
-    supabaseAnonKey: {{ $supabaseKey | jsonify }}
-  };
-  {{- end }}
-</script>
+{{- $surveyI18n := dict
+  "recWorkingAbroad" (T "apcSurveyRecWorkingAbroad" | plainify)
+  "recCareer" (T "apcSurveyRecCareer" | plainify)
+  "summaryStatus" (T "apcSurveySummaryStatus" | plainify)
+  "summaryTarget" (T "apcSurveySummaryTarget" | plainify)
+  "summaryRole" (T "apcSurveySummaryRole" | plainify)
+  "summaryTopics" (T "apcSurveySummaryTopics" | plainify)
+  "errorRequired" (T "apcSurveyErrorRequired" | plainify)
+  "saving" (T "apcSurveySaving" | plainify)
+  "saved" (T "apcSurveySaved" | plainify)
+  "noDb" (T "apcSurveyNoDb" | plainify)
+  "saveFailed" (T "apcSurveySaveFailed" | plainify)
+-}}
+<script type="application/json" id="apc-survey-i18n">{{ $surveyI18n | jsonify | safeHTML }}</script>
+{{- if and $supabaseUrl $supabaseKey }}
+<script type="application/json" id="apc-survey-config">{{ dict "supabaseUrl" $supabaseUrl "supabaseAnonKey" $supabaseKey | jsonify | safeHTML }}</script>
+{{- end }}
   <div class="apc-survey__card">
     <h2 class="apc-survey__title" id="apc-survey-title">{{ $survey.title }}</h2>
     <p class="apc-survey__desc">{{ $survey.description }}</p>

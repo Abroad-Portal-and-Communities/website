@@ -16,9 +16,9 @@ Memulai ketika Anda berencana bekerja di luar negeri.
 
 ## Daftar periksa
 
-1. **Legal** — Hak kerja, tinjauan kontrak, jaminan sosial
+1. **Legal** — Hak kerja, tinjauan kontrak, jaminan sosial — lihat [Legal & dokumen (Eropa)](/docs/working-abroad/eu/legal-and-documents/)
 2. **Keuangan** — Mata uang gaji, perbankan, dana darurat
 3. **Logistik** — Hunian, kesehatan, telepon, pendaftaran lokal
 4. **Komunitas** — Dasar bahasa, tumpang tindih zona waktu dengan tim
 
-Selanjutnya: pilih panduan wilayah — [Eropa](/docs/working-abroad/eu/), [AS](/docs/working-abroad/us/), [Asia](/docs/working-abroad/asia/), atau [Wilayah lain](/docs/working-abroad/other/).
+Selanjutnya: pilih panduan wilayah — [Eropa](/docs/working-abroad/eu/), [AS](/docs/working-abroad/us/), [Asia](/docs/working-abroad/asia/), atau [Wilayah lain](/docs/working-abroad/other/). Di Eropa, buka [Negara](/docs/working-abroad/eu/countries/) untuk Jerman, Lituania, dan lainnya.

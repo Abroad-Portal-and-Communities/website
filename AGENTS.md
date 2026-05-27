@@ -17,8 +17,11 @@ Hugo (extended) + Hextra static site for Abroad Portal and Communities. Producti
 | `config/development/hugo.yaml` | Local Supabase keys (**gitignored**) |
 | `docs/` | Maintainer guides (not published in site nav) |
 | `docs/event-registration.md` | Event registration (Luma recommended; Google Forms appendix) |
+| `docs/comments.md` | Giscus / GitHub Discussions on doc pages |
 | `skills/apc-site-content/SKILL.md` | Detailed content/event authoring (incl. shortcode link rules) |
 | `scripts/lint-markdown.sh` | Markdownlint via Docker (matches CI) |
+| `scripts/export-survey-responses.sh` | Export `survey_responses` via service role (local only) |
+| `supabase/queries-reporting.sql` | SQL for totals and breakdowns |
 | `supabase/` | SQL schema and migrations |
 
 ## Workflows
@@ -36,7 +39,7 @@ Do **not** commit: `config/development/hugo.yaml`, `hugo.local.yaml`, `.env`, `p
 - Languages: `config/_default/languages.yaml` (`en` default, `id` Bahasa Indonesia).
 - Page translations: sibling files `page.id.md` next to `page.md` (Hextra/Hugo filename pattern).
 - UI strings: `i18n/id.yaml` (menu uses `identifier` in `hugo.yaml` → translated via i18n).
-- Data: `data/events.id.yaml`, `data/survey.id.yaml` for Indonesian event/survey copy.
+- Data: `data/id/events.yaml`, `data/id/survey.yaml` for Indonesian event/survey copy (loaded via `layouts/partials/apc-lang-data.html`).
 
 ## Content tasks
 
@@ -48,7 +51,7 @@ Use the project skill **apc-site-content** ([skills/apc-site-content/SKILL.md](s
 
 ## Events and tags
 
-- **Upcoming:** `register` URL (Luma or Google Form) in `data/events.yaml` and `data/events.id.yaml` — see `docs/event-registration.md`.
+- **Upcoming:** `register` URL (Luma or Google Form) in `data/events.yaml` and `data/id/events.yaml` — see `docs/event-registration.md`.
 - **Past:** `youtube` recording URL.
 - **Tags** link events to career/working-abroad pages (e.g. `devops`, `eu`, `working-abroad`). Match slugs from URL paths or survey job IDs in `data/survey.yaml`.
 

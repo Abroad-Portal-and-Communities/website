@@ -1,6 +1,6 @@
 # Event registration
 
-The Hugo site only links to a registration URL (`register` in `data/events.yaml` and `data/events.id.yaml`). Sign-ups, confirmation emails, calendar invites, and reminders run on the registration platform — not in this repo.
+The Hugo site only links to a registration URL (`register` in `data/events.yaml` and `data/id/events.yaml`). Sign-ups, confirmation emails, calendar invites, and reminders run on the registration platform — not in this repo.
 
 ## Recommended: [Luma](https://lu.ma)
 
@@ -31,20 +31,20 @@ The Hugo site only links to a registration URL (`register` in `data/events.yaml`
 5. Copy the public event URL (e.g. `https://lu.ma/devops-sre-may-2026`).
 6. Update the repo:
    - `data/events.yaml` → `register:` (English page — same Luma URL is fine until you run two events)
-   - `data/events.id.yaml` → `register:` (Indonesian copy on site; can use the **same** Luma URL or a second event if you want ID-only description on Luma)
+   - `data/id/events.yaml` → `register:` (Indonesian copy on site; can use the **same** Luma URL or a second event if you want ID-only description on Luma)
 7. Align `title`, `date`, and `description` in YAML with the Luma page.
 
 ### Bilingual site + one Luma event
 
-- **Simplest:** One Luma event in English (or bilingual description on Luma); put the same URL in both `events.yaml` and `events.id.yaml`.
-- **Separate Luma pages:** English event URL in `events.yaml`, Indonesian event URL in `events.id.yaml` (two RSVPs, two guest lists — only if you need split analytics).
+- **Simplest:** One Luma event in English (or bilingual description on Luma); put the same URL in both `events.yaml` and `data/id/events.yaml`.
+- **Separate Luma pages:** English event URL in `events.yaml`, Indonesian event URL in `data/id/events.yaml` (two RSVPs, two guest lists — only if you need split analytics).
 
 ### After you create the DevOps Luma page
 
 Replace the Google Form URL in:
 
 ```yaml
-# data/events.yaml & data/events.id.yaml
+# data/events.yaml & data/id/events.yaml
 register: "https://lu.ma/your-event-slug"
 ```
 
@@ -73,7 +73,7 @@ Strong for discovery and free-ticket events ([pricing](https://www.eventbrite.co
 
 1. Create or duplicate a Google Form.
 2. Attach Apps Script on the linked Sheet (one script per form).
-3. Set `register` in `data/events.yaml` / `data/events.id.yaml`.
+3. Set `register` in `data/events.yaml` / `data/id/events.yaml`.
 4. Match site copy to the form.
 
 ### Form fields

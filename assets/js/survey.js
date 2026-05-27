@@ -1,8 +1,20 @@
 (function () {
   const STORAGE_KEY = "apc-survey-v2";
 
+  function readJsonScript(id) {
+    const el = document.getElementById(id);
+    if (!el || !el.textContent) return null;
+    try {
+      let data = JSON.parse(el.textContent.trim());
+      if (typeof data === "string") data = JSON.parse(data);
+      return data;
+    } catch (_) {
+      return null;
+    }
+  }
+
   function i18n(key, fallback) {
-    const bag = window.__APC_SURVEY_I18N || {};
+    const bag = window.__APC_SURVEY_I18N || readJsonScript("apc-survey-i18n") || {};
     return bag[key] || fallback;
   }
 
@@ -23,10 +35,12 @@
   }
 
   function readConfig() {
-    if (window.__APC_SURVEY_CONFIG) {
+    const cfg =
+      window.__APC_SURVEY_CONFIG || readJsonScript("apc-survey-config") || null;
+    if (cfg) {
       return {
-        supabaseUrl: cleanCredential(window.__APC_SURVEY_CONFIG.supabaseUrl),
-        supabaseAnonKey: cleanCredential(window.__APC_SURVEY_CONFIG.supabaseAnonKey),
+        supabaseUrl: cleanCredential(cfg.supabaseUrl),
+        supabaseAnonKey: cleanCredential(cfg.supabaseAnonKey),
       };
     }
     return { supabaseUrl: "", supabaseAnonKey: "" };
