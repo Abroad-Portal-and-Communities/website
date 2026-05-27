@@ -199,3 +199,124 @@
 html.dark .apc-survey__status--error {
   color: #f87171;
 }
+
+/* Event tags & related sharing sessions */
+.apc-event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.apc-event-tags__pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.apc-event-tags__pill:hover {
+  opacity: 1;
+  border-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.apc-related-events {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.apc-related-events__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.apc-related-events__intro {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.apc-related-events__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.apc-related-events__item {
+  border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+.apc-related-events__event-title {
+  display: inline;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0.5rem 0 0;
+}
+
+.apc-related-events__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, hsl(var(--primary-hue), 100%, 50%) 15%, transparent);
+  color: hsl(var(--primary-hue), 100%, 40%);
+  vertical-align: middle;
+}
+
+.apc-related-events__badge--past {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: inherit;
+  opacity: 0.8;
+}
+
+.apc-related-events__meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.apc-related-events__desc {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.apc-related-events__actions {
+  margin: 0.75rem 0 0;
+}
+
+.apc-related-events__link {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.apc-events-filter-banner {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  background: color-mix(in srgb, hsl(var(--primary-hue), 100%, 50%) 10%, transparent);
+}
+
+.apc-events-filter-banner a {
+  margin-left: 0.5rem;
+  font-weight: 500;
+}

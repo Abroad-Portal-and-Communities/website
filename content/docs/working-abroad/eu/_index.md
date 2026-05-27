@@ -15,6 +15,3 @@ Working in or with European teams.
 - Work–life balance and statutory leave norms
 - Cross-border remote work within the EU
 
-## Sharing session
-
-Our past **Sharing Session: Working Abroad** covered collaborating with European teams. Watch the recording on the [Events](/events/) page.
