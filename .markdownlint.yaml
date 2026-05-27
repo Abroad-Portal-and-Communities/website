@@ -4,3 +4,4 @@ default: true
 MD013: false # line length
 MD033: false # inline HTML / shortcodes
 MD041: false # first line must be heading (conflicts with front matter)
+MD034: false # bare URLs in README tables
