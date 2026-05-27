@@ -1,4 +1,4 @@
-module github.com/apc/websites
+module github.com/apc/website
 
 go 1.26
 
