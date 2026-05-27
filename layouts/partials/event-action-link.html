@@ -1,0 +1,14 @@
+{{- /* Upcoming → register URL; past → YouTube recording. */ -}}
+{{- $event := .event -}}
+{{- $when := .when | default "past" -}}
+{{- $class := .class | default "hx:inline-flex hx:items-center hx:gap-2 hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:decoration-from-font" -}}
+
+{{- if eq $when "upcoming" -}}
+  {{- with $event.register -}}
+    <a class="{{ $class }}" href="{{ . }}" target="_blank" rel="noopener noreferrer">Register ↗</a>
+  {{- end -}}
+{{- else -}}
+  {{- with $event.youtube -}}
+    <a class="{{ $class }}" href="{{ . }}" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+  {{- end -}}
+{{- end -}}

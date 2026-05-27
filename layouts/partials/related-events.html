@@ -1,0 +1,84 @@
+{{- /* Sharing sessions on docs pages that share tags with the current page. */ -}}
+{{- $tags := .Params.eventTags | default slice -}}
+{{- if not $tags -}}
+  {{- $dir := strings.TrimSuffix "/" .File.Dir -}}
+  {{- if or (hasPrefix $dir "docs/career-plan") (hasPrefix $dir "docs/working-abroad") -}}
+    {{- $parts := split $dir "/" -}}
+    {{- $len := len $parts -}}
+    {{- if ge $len 3 -}}
+      {{- $tags = $tags | append (index $parts (sub $len 1)) -}}
+    {{- end -}}
+    {{- if ge $len 4 -}}
+      {{- $tags = $tags | append (index $parts (sub $len 2)) -}}
+    {{- end -}}
+    {{- if hasPrefix $dir "docs/working-abroad" -}}
+      {{- $tags = $tags | append "working-abroad" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $tags -}}
+  {{- return -}}
+{{- end -}}
+
+{{- $eventsData := site.Data.events | default dict -}}
+{{- $upcoming := $eventsData.upcoming | default slice -}}
+{{- $past := $eventsData.past | default slice -}}
+{{- $related := slice -}}
+
+{{- range $upcoming -}}
+  {{- $eventTags := .tags | default slice -}}
+  {{- $match := false -}}
+  {{- range $eventTags -}}
+    {{- if in $tags . -}}
+      {{- $match = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $match -}}
+    {{- $related = $related | append (dict "event" . "when" "upcoming") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range $past -}}
+  {{- $eventTags := .tags | default slice -}}
+  {{- $match := false -}}
+  {{- range $eventTags -}}
+    {{- if in $tags . -}}
+      {{- $match = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $match -}}
+    {{- $related = $related | append (dict "event" . "when" "past") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $related) 0 -}}
+{{- $primaryTag := index $tags 0 -}}
+<section class="apc-related-events" aria-labelledby="apc-related-events-title">
+  <h2 id="apc-related-events-title" class="apc-related-events__title">Related sharing sessions</h2>
+  <p class="apc-related-events__intro">
+    Recordings and upcoming talks that match this topic.
+    <a href="{{ `/events/` | relURL }}?tag={{ $primaryTag }}">Browse all on Events</a>
+  </p>
+  <ul class="apc-related-events__list">
+    {{- range $related -}}
+      {{- $e := .event -}}
+      <li class="apc-related-events__item">
+        <h3 class="apc-related-events__event-title">{{ $e.title }}</h3>
+        {{- if eq .when "upcoming" -}}
+          <span class="apc-related-events__badge">Upcoming</span>
+        {{- else -}}
+          <span class="apc-related-events__badge apc-related-events__badge--past">Past</span>
+        {{- end -}}
+        <p class="apc-related-events__meta">
+          <time datetime="{{ $e.date }}">{{ $e.date | time.Format ":date_long" }}</time>
+        </p>
+        <p class="apc-related-events__desc">{{ $e.description }}</p>
+        {{- partial "event-tags.html" (dict "event" $e) -}}
+        <p class="apc-related-events__actions">
+          {{- partial "event-action-link.html" (dict "event" $e "when" .when "class" "apc-related-events__link") -}}
+        </p>
+      </li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}

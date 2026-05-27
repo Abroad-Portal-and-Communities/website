@@ -21,6 +21,4 @@ Bridge development and operations with automation, platforms, and reliability.
 3. Terraform or similar IaC; GitOps workflows
 4. Observability: metrics, logs, traces
 
-See also our [DevOps sharing session](/events/) on the Events page.
-
 [← Mobile](/docs/career-plan/developer/mobile/) · Next track: [Data Engineer](/docs/career-plan/data-engineer/)
