@@ -58,8 +58,8 @@ Production and PR previews both publish to the **`gh-pages`** branch.
 
 | Environment | URL |
 |-------------|-----|
-| Production | [abroad-portal-and-communities.github.io/websites/](https://abroad-portal-and-communities.github.io/websites/) |
-| PR preview | `.../websites/pr-preview/pr-<number>/` |
+| Production | [abroad-portal-and-communities.github.io/website/](https://abroad-portal-and-communities.github.io/website/) |
+| PR preview | `.../website/pr-preview/pr-<number>/` |
 
 Each pull request gets a sticky comment with the preview link (and QR code). Previews are removed when the PR is closed.
 

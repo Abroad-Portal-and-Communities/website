@@ -14,7 +14,7 @@ concurrency:
 
 env:
   HUGO_VERSION: "0.162.0"
-  PAGES_BASE_URL: https://abroad-portal-and-communities.github.io/websites/
+  PAGES_BASE_URL: https://abroad-portal-and-communities.github.io/website/
 
 jobs:
   build-and-deploy:
