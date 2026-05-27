@@ -35,33 +35,29 @@ hugo mod tidy
 
 ## Deploy (GitHub Pages)
 
-Production and PR previews both publish to the **`gh-pages`** branch.
+Uses GitHub’s official [Pages Actions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow) (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
 
 | Workflow | Trigger | Result |
 |----------|---------|--------|
-| [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build and Markdown lint |
+| [lint.yaml](.github/workflows/lint.yaml) | Pull request, push to `main` | Hugo build and Markdown lint (skips jobs when unrelated files change) |
 | [conventional-pr.yaml](.github/workflows/conventional-pr.yaml) | Pull request | Validates Conventional Commits PR title |
-| [pages.yaml](.github/workflows/pages.yaml) | Push to `main` | Production site |
-| [preview.yaml](.github/workflows/preview.yaml) | Pull request | Preview URL posted as a PR comment |
+| [pages.yaml](.github/workflows/pages.yaml) | Push to `main`, pull request | Production deploy and PR preview deploy |
 
 ### One-time setup
 
-1. Push to GitHub and merge into **`main`** (not `master`).
+1. Push to GitHub and merge into **`main`**.
 2. **Settings → Pages**
-   - **Source:** Deploy from a branch
-   - **Branch:** `gh-pages` / `/ (root)`
-3. **Settings → Actions → General → Workflow permissions**
-   - Select **Read and write permissions**
-4. Wait for the first **Deploy to GitHub Pages** workflow on `main` to finish.
+   - **Source:** **GitHub Actions** (not “Deploy from a branch”)
+3. Wait for the first **Deploy to GitHub Pages** workflow on `main` to finish.
 
 ### URLs
 
 | Environment | URL |
 |-------------|-----|
-| Production | [abroad-portal-and-communities.github.io/websites/](https://abroad-portal-and-communities.github.io/websites/) |
-| PR preview | `.../websites/pr-preview/pr-<number>/` |
+| Production | [abroad-portal-and-communities.github.io/website/](https://abroad-portal-and-communities.github.io/website/) |
+| PR preview | Shown in the PR **Deployments** check (GitHub-generated preview URL) |
 
-Each pull request gets a sticky comment with the preview link (and QR code). Previews are removed when the PR is closed.
+`configure-pages` sets Hugo’s `baseURL` automatically for production and previews.
 
 ### PR titles (Conventional Commits)
 

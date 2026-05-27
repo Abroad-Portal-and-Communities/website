@@ -3,39 +3,41 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: pages-production
-  cancel-in-progress: false
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   HUGO_VERSION: "0.162.0"
-  PAGES_BASE_URL: https://abroad-portal-and-communities.github.io/websites/
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 8
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
       - name: Setup Go
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
           cache: true
 
       - name: Cache Hugo and Go modules
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: |
             /tmp/hugo_cache
@@ -50,19 +52,27 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build site
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: |
-          hugo mod tidy
-          hugo --gc --minify --baseURL "${{ env.PAGES_BASE_URL }}"
+        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Deploy production site
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: public
-          clean-exclude: pr-preview
-          force: false
-          single-commit: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
