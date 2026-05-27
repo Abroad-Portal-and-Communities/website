@@ -1,0 +1,12 @@
+# Prefer config/development/hugo.yaml (auto-loaded by `hugo server`).
+#
+# Alternative: copy this file to hugo.local.yaml and run:
+#   hugo server --config config/_default/hugo.yaml,hugo.local.yaml -p 1313
+#
+# Or use: ./scripts/dev-server.sh
+
+params:
+  survey:
+    supabase:
+      url: "https://YOUR_PROJECT_REF.supabase.co"
+      anonkey: "YOUR_PUBLISHABLE_KEY"

@@ -3,6 +3,9 @@ public/
 resources/
 .hugo_build.lock
 
+# Hugo module vendor (local copy; pin theme via go.mod + go.sum)
+_vendor/
+
 # Local temp clones / experiments
 .hextra-starter/
 
@@ -33,9 +36,13 @@ profile.cov
 go.work
 go.work.sum
 
-# env file
+# --- Secrets & local-only config (safe to run: git add .) ---
 .env
 .env.*
+config/development/hugo.yaml
+hugo.local.yaml
+hugo.local.yml
+hugo.local.toml
 
 # Editor
 .vscode/

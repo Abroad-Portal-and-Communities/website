@@ -1,0 +1,13 @@
+# Copy to hugo.yaml in this folder (same directory). File is gitignored.
+#
+#   cp config/development/hugo.yaml.example config/development/hugo.yaml
+#   # Edit with your Supabase Project URL + Publishable key
+#   hugo server --disableFastRender -p 1313
+#
+# `hugo server` uses the "development" environment and loads this automatically.
+
+params:
+  survey:
+    supabase:
+      url: "https://YOUR_PROJECT_REF.supabase.co"
+      anonkey: "YOUR_PUBLISHABLE_KEY"

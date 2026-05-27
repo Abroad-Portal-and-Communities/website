@@ -1,0 +1,131 @@
+{{- $survey := site.Data.survey -}}
+{{- $supabase := site.Params.survey.supabase | default dict -}}
+{{- $supabaseUrl := index $supabase "url" | default "" | strings.TrimSpace -}}
+{{- $supabaseKey := index $supabase "anonkey" | default (index $supabase "anonKey") | default "" | strings.TrimSpace -}}
+<section class="apc-survey" id="community-survey" aria-labelledby="apc-survey-title">
+{{- if and $supabaseUrl $supabaseKey }}
+<script>
+  window.__APC_SURVEY_CONFIG = {
+    supabaseUrl: {{ $supabaseUrl | jsonify }},
+    supabaseAnonKey: {{ $supabaseKey | jsonify }}
+  };
+</script>
+{{- end }}
+  <div class="apc-survey__card">
+    <h2 class="apc-survey__title" id="apc-survey-title">{{ $survey.title }}</h2>
+    <p class="apc-survey__desc">{{ $survey.description }}</p>
+
+    <form class="apc-survey__form" id="apc-survey-form" novalidate>
+      <fieldset class="apc-survey__fieldset">
+        <legend class="apc-survey__legend">What is your current status?</legend>
+        <div class="apc-survey__options">
+          {{- range $survey.statuses }}
+            <label class="apc-survey__option">
+              <input type="radio" name="status" value="{{ .id }}" data-label="{{ .label }}" required />
+              <span>{{ .label }}</span>
+            </label>
+          {{- end }}
+        </div>
+        <div class="apc-survey__field" id="apc-status-detail-wrap" hidden>
+          <label class="apc-survey__label" for="apc-survey-status-detail">Tell us more about your current status</label>
+          <input
+            class="apc-survey__input"
+            type="text"
+            name="status_detail"
+            id="apc-survey-status-detail"
+            placeholder="e.g. employed as network admin, 2nd-year CS student, grade 12 STEM"
+          />
+        </div>
+      </fieldset>
+
+      <fieldset class="apc-survey__fieldset">
+        <legend class="apc-survey__legend">Which region do you want to work abroad in?</legend>
+        <div class="apc-survey__options">
+          {{- range $survey.continents }}
+            <label class="apc-survey__option">
+              <input
+                type="radio"
+                name="continent"
+                value="{{ .id }}"
+                data-label="{{ .label }}"
+                data-link="{{ relURL .link }}"
+                required
+              />
+              <span>{{ .label }}</span>
+            </label>
+          {{- end }}
+        </div>
+        <div class="apc-survey__field" id="apc-country-wrap" hidden>
+          <label class="apc-survey__label" for="apc-survey-country">Which country?</label>
+          <input
+            class="apc-survey__input"
+            type="text"
+            name="country"
+            id="apc-survey-country"
+            placeholder="e.g. Japan, Germany, Canada"
+            autocomplete="country-name"
+          />
+        </div>
+      </fieldset>
+
+      <fieldset class="apc-survey__fieldset">
+        <legend class="apc-survey__legend">What job are you aiming for?</legend>
+        <div class="apc-survey__options apc-survey__options--jobs">
+          {{- range $survey.jobs }}
+            <label class="apc-survey__option">
+              <input
+                type="radio"
+                name="job"
+                value="{{ .id }}"
+                data-label="{{ .label }}"
+                data-link="{{ relURL .link }}"
+                data-other="{{ if eq .id "other-job" }}true{{ else }}false{{ end }}"
+                required
+              />
+              <span>{{ .label }}</span>
+            </label>
+          {{- end }}
+        </div>
+        <div class="apc-survey__field" id="apc-job-other-wrap" hidden>
+          <label class="apc-survey__label" for="apc-survey-job-other">Describe your target role</label>
+          <input
+            class="apc-survey__input"
+            type="text"
+            name="job_other"
+            id="apc-survey-job-other"
+            placeholder="e.g. Cloud architect, SRE, QA automation"
+          />
+        </div>
+      </fieldset>
+
+      <fieldset class="apc-survey__fieldset">
+        <legend class="apc-survey__legend">What are you looking for? <span class="apc-survey__hint">(choose one or more)</span></legend>
+        <div class="apc-survey__options">
+          {{- range $survey.looking_for }}
+            <label class="apc-survey__option">
+              <input
+                type="checkbox"
+                name="looking_for"
+                value="{{ .id }}"
+                data-label="{{ .label }}"
+                data-link="{{ relURL .link }}"
+              />
+              <span>{{ .label }}</span>
+            </label>
+          {{- end }}
+        </div>
+      </fieldset>
+
+      <button type="submit" class="apc-survey__submit">{{ $survey.submit_label }}</button>
+    </form>
+
+    <p class="apc-survey__status" id="apc-survey-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="apc-survey__results" id="apc-survey-results" hidden>
+      <h3 class="apc-survey__results-title">Recommended for you</h3>
+      <p class="apc-survey__results-summary" id="apc-survey-summary"></p>
+      <ul class="apc-survey__result-list" id="apc-survey-result-list"></ul>
+      <button type="button" class="apc-survey__reset" id="apc-survey-reset">Change answers</button>
+    </div>
+  </div>
+</section>

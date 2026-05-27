@@ -1,6 +1,6 @@
 # APC Websites
 
-Static site built with [Hugo](https://gohugo.io/) and the [Hextra](https://github.com/imfing/hextra) theme.
+Static site for the Abroad Portal and Communities documentation and events.
 
 ## Prerequisites
 
@@ -15,7 +15,25 @@ hugo mod tidy
 hugo server --disableFastRender -p 1313
 ```
 
-Open [http://localhost:1313/](http://localhost:1313/)
+Open [http://localhost:1313/website/](http://localhost:1313/website/).
+
+### Survey + Supabase (local)
+
+```shell
+cp config/development/hugo.yaml.example config/development/hugo.yaml
+# Edit config/development/hugo.yaml — Project URL + Publishable key from Supabase → Settings → API
+hugo server --disableFastRender -p 1313
+```
+
+`hugo server` loads `config/development/hugo.yaml` automatically. Or run `./scripts/dev-server.sh`.
+
+If you already use root `hugo.local.yaml`, copy the same values into `config/development/hugo.yaml`.
+
+Production: GitHub secrets `SUPABASE_URL` and `SUPABASE_ANON_KEY`. See [docs/survey-database.md](docs/survey-database.md).
+
+### Git commits (secrets stay local)
+
+`git add .` is safe: `.gitignore` excludes `config/development/hugo.yaml` and `hugo.local.yaml`. Commit `config/development/hugo.yaml.example`, not your real keys file.
 
 ## Build
 

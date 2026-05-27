@@ -1,0 +1,83 @@
+title: Tell us about your goals
+description: Answer a few questions and we'll suggest guides from our docs. Optional fields help us improve the community resources.
+submit_label: Show my guides
+
+statuses:
+  - id: working
+    label: Working (employed)
+  - id: college
+    label: Studying in college
+  - id: senior-high
+    label: Senior high school
+
+continents:
+  - id: asia
+    label: Asia
+    link: docs/working-abroad/asia/
+  - id: eu
+    label: Europe
+    link: docs/working-abroad/eu/
+  - id: america
+    label: Americas (US, Canada, Latin America)
+    link: docs/working-abroad/us/
+  - id: other
+    label: Africa, Oceania & other regions
+    link: docs/working-abroad/other/
+
+jobs:
+  - id: backend-developer
+    label: Backend Developer
+    link: docs/career-plan/developer/backend/
+  - id: frontend-developer
+    label: Frontend Developer
+    link: docs/career-plan/developer/frontend/
+  - id: fullstack-developer
+    label: Full-Stack Developer
+    link: docs/career-plan/developer/full-stack/
+  - id: mobile-developer
+    label: Mobile Developer
+    link: docs/career-plan/developer/mobile/
+  - id: devops
+    label: DevOps Engineer
+    link: docs/career-plan/developer/devops/
+  - id: network-engineer
+    label: Network Engineer
+    link: docs/career-plan/network/network-engineer/
+  - id: network-administrator
+    label: Network Administrator
+    link: docs/career-plan/network/network-administrator/
+  - id: network-security
+    label: Network Security Engineer
+    link: docs/career-plan/network/network-security/
+  - id: data-pipeline
+    label: Data Pipeline Engineer
+    link: docs/career-plan/data-engineer/pipeline/
+  - id: analytics-engineer
+    label: Analytics Engineer
+    link: docs/career-plan/data-engineer/analytics/
+  - id: ml-engineer
+    label: ML Engineer
+    link: docs/career-plan/data-engineer/ml-engineer/
+  - id: other-job
+    label: Other role (specify below)
+    link: docs/career-plan/
+
+looking_for:
+  - id: living-expense
+    label: Living expenses & cost of living
+    link: docs/working-abroad/starter/
+  - id: career-plan
+    label: Career plan & role roadmaps
+    link: docs/career-plan/
+  - id: permits
+    label: Visas, permits & legal requirements
+    link: docs/working-abroad/starter/
+  - id: timeline
+    label: Timeline & steps to work abroad
+    link: docs/working-abroad/starter/
+  - id: culture
+    label: Workplace culture & norms
+    link: docs/working-abroad/starter/
+  - id: events
+    label: Community events & sharing sessions
+    link: events/
