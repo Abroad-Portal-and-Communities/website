@@ -1,0 +1,6 @@
+{{- partial "community-survey.html" . -}}
+{{- $js := resources.Get "js/survey.js" -}}
+{{- if hugo.IsProduction -}}
+  {{- $js = $js | minify | fingerprint -}}
+{{- end -}}
+<script src="{{ $js.RelPermalink }}" defer></script>

@@ -51,3 +51,5 @@ layout: hextra-home
     style="background: radial-gradient(ellipse at 50% 80%, rgba(107, 114, 128, 0.12), hsla(0, 0%, 100%, 0));"
   >}}
 {{< /hextra/feature-grid >}}
+
+{{< community-survey >}}

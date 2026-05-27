@@ -38,10 +38,11 @@ jobs:
             hugo:
               - 'content/**'
               - 'data/**'
+              - 'assets/js/**'
               - 'layouts/**'
               - 'assets/**'
               - 'static/**'
-              - 'hugo.yaml'
+              - 'config/**'
               - 'go.mod'
               - 'go.sum'
             markdown:
