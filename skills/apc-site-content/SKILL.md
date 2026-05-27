@@ -90,6 +90,7 @@ next: docs/path/to/next
 - Europe topic: `content/docs/working-abroad/eu/legal-and-documents/_index.md`
 - Europe country: `content/docs/working-abroad/eu/countries/<slug>/_index.md` (+ `_index.id.md`); list on `eu/countries/_index.md` and link from `eu/legal-and-documents/`
 - Page comments: set `comments: true` in front matter (Giscus — see `docs/comments.md`)
+- Edit on GitHub: enabled via `params.editURL` in `hugo.yaml`; appears in the docs sidebar (TOC). Override a page with `editURL:` in front matter if needed.
 - New top-level section: add `_index.md` + entry in parent `_index.md` table if applicable
 
 ### Shortcode links (`card`, `hero-button`, `feature-card`)

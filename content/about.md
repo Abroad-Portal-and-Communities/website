@@ -7,6 +7,7 @@ Community documentation for working abroad, career planning, and sharing session
 
 ## Connect with us
 
+- [GitHub](https://github.com/Abroad-Portal-and-Communities/website) — edit docs and open issues
 - [Instagram](https://www.instagram.com/abroadportalcommunity/)
 - [YouTube](https://www.youtube.com/@AbroadPortalCommunity)
 - [LinkedIn](https://www.linkedin.com/company/abroad-portal-communities/)
