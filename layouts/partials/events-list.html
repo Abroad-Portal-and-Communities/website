@@ -1,0 +1,27 @@
+{{- $events := .events -}}
+{{- if not $events -}}
+  <p class="hx:opacity-70 hx:italic">No events listed yet.</p>
+{{- else -}}
+  <div class="hx:grid hx:gap-4 hx:mt-4">
+    {{- range $events -}}
+      <div class="hx:rounded-lg hx:border hx:border-gray-200 hx:dark:border-neutral-700 hx:bg-neutral-50 hx:dark:bg-neutral-800/50 hx:p-5">
+        <h3 class="hx:text-xl hx:font-semibold hx:tracking-tight">{{ .title }}</h3>
+        <p class="hx:mt-2 hx:text-sm hx:opacity-70">
+          <span class="hx:font-medium">Date:</span>
+          {{ .date | time.Format ":date_long" }}
+        </p>
+        <p class="hx:mt-3 hx:leading-7 hx:opacity-90">{{ .description }}</p>
+        <p class="hx:mt-4">
+          <a
+            class="hx:inline-flex hx:items-center hx:gap-2 hx:text-[color:hsl(var(--primary-hue),100%,50%)] hx:underline hx:underline-offset-2 hx:decoration-from-font"
+            href="{{ .youtube }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Watch on YouTube ↗
+          </a>
+        </p>
+      </div>
+    {{- end -}}
+  </div>
+{{- end -}}

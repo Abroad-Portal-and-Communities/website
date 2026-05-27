@@ -1,0 +1,12 @@
+upcoming:
+  - title: "Sharing Session: DevOps"
+    date: 2026-08-20
+    description: "CI/CD pipelines, infrastructure as code, and observability for modern teams."
+    youtube: "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+
+past:
+  - title: "Sharing Session: Working Abroad"
+    date: 2026-03-15
+    description: "Stories and practical tips on working abroad — visas, culture, and collaborating across regions."
+    youtube: "https://www.youtube.com/watch?v=ysz5S6PUM-U"
+    region: eu
