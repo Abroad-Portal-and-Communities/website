@@ -41,7 +41,7 @@ jobs:
 
       - name: Cache Hugo and Go modules
         if: github.event.action != 'closed'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             /tmp/hugo_cache
