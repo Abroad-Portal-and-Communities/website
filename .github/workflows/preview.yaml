@@ -18,7 +18,9 @@ concurrency:
 
 env:
   HUGO_VERSION: "0.162.0"
-  PAGES_BASE_URL: https://abroad-portal-and-communities.github.io/websites/
+  PAGES_SITE_URL: https://abroad-portal-and-communities.github.io/websites/
+  # pr-preview-action expects host/path without protocol
+  PAGES_BASE_URL: abroad-portal-and-communities.github.io/websites/
 
 jobs:
   preview:
@@ -64,10 +66,11 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo mod tidy
-          hugo --gc --minify --baseURL "${{ env.PAGES_BASE_URL }}pr-preview/pr-${{ github.event.number }}/"
+          hugo --gc --minify --baseURL "${{ env.PAGES_SITE_URL }}pr-preview/pr-${{ github.event.number }}/"
 
       - name: Deploy PR preview
         uses: rossjrw/pr-preview-action@v1
+        continue-on-error: ${{ github.event.action == 'closed' }}
         with:
           source-dir: public
           preview-branch: gh-pages
