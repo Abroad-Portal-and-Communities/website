@@ -9,6 +9,10 @@ on:
     paths-ignore:
       - "public/**"
 
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -16,24 +20,54 @@ env:
   HUGO_VERSION: "0.162.0"
 
 jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      hugo: ${{ steps.filter.outputs.hugo }}
+      markdown: ${{ steps.filter.outputs.markdown }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            hugo:
+              - 'content/**'
+              - 'data/**'
+              - 'layouts/**'
+              - 'assets/**'
+              - 'static/**'
+              - 'hugo.yaml'
+              - 'go.mod'
+              - 'go.sum'
+            markdown:
+              - 'content/**'
+              - 'README.md'
+              - '.markdownlint.yaml'
+
   hugo:
     name: Hugo build
+    needs: changes
+    if: needs.changes.outputs.hugo == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 8
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
           cache: true
 
-      - name: Cache Hugo and Go modules
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: |
             /tmp/hugo_cache
@@ -42,27 +76,29 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugo-${{ env.HUGO_VERSION }}-
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+      - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      - name: Build site
-        run: |
-          hugo mod tidy
-          hugo --gc --minify --baseURL "http://localhost/"
+      - run: hugo --baseURL "http://localhost/"
 
   markdown:
     name: Markdown
+    needs: changes
+    if: needs.changes.outputs.markdown == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            content
+            README.md
+            .markdownlint.yaml
 
-      - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v18
+      - uses: DavidAnson/markdownlint-cli2-action@v18
         with:
           config: .markdownlint.yaml
           globs: |
