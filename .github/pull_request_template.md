@@ -11,7 +11,7 @@ Examples:
 - `feat: add career plan section`
 - `fix: correct events page layout`
 - `docs: update GitHub Pages setup`
-- `ci: add lint workflow`
+- `ci: update deploy workflow`
 
 | Type | Typical meaning |
 |------|-----------------|
@@ -24,4 +24,4 @@ Examples:
 
 - [ ] PR title follows Conventional Commits (e.g. `feat: …`, `fix: …`)
 - [ ] Site builds locally (`hugo server`)
-- [ ] Lint workflow passes
+- [ ] Lint workflow passes (Hugo build, Markdown)
