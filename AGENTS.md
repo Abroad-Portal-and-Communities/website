@@ -57,7 +57,7 @@ Use the project skill **apc-site-content** ([skills/apc-site-content/SKILL.md](s
 
 ## Social links
 
-Configured in `config/_default/hugo.yaml` under `params.social`. Rendered in the footer via `layouts/partials/social-links.html` and listed on About pages.
+Configured in `config/_default/hugo.yaml` under `params.social` (includes GitHub repo link). Rendered in the footer via `layouts/partials/social-links.html` and listed on About pages. Per-page **Edit on GitHub** links use `params.editURL` (sidebar TOC on docs pages).
 
 ## GitHub Pages URLs
 

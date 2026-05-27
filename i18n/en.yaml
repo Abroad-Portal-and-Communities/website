@@ -93,6 +93,7 @@ apcSurveySaveFailed: "Could not save to the database"
 
 # Social links
 apcSocialNavLabel: "Follow APC"
+apcSocialGithub: "GitHub"
 apcSocialInstagram: "Instagram"
 apcSocialYoutube: "YouTube"
 apcSocialLinkedin: "LinkedIn"

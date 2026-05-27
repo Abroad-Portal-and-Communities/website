@@ -1,5 +1,6 @@
 {{- $social := site.Params.social | default dict -}}
 {{- $links := slice
+  (dict "id" "github" "url" $social.github "label" (T "apcSocialGithub"))
   (dict "id" "instagram" "url" $social.instagram "label" (T "apcSocialInstagram"))
   (dict "id" "youtube" "url" $social.youtube "label" (T "apcSocialYoutube"))
   (dict "id" "linkedin" "url" $social.linkedin "label" (T "apcSocialLinkedin"))

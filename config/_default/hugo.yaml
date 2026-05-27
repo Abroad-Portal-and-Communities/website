@@ -69,12 +69,14 @@ params:
     width: wide
 
   social:
+    github: https://github.com/Abroad-Portal-and-Communities/website
     instagram: https://www.instagram.com/abroadportalcommunity/
     youtube: https://www.youtube.com/@AbroadPortalCommunity
     linkedin: https://www.linkedin.com/company/abroad-portal-communities/
 
   editURL:
-    enable: false
+    enable: true
+    base: https://github.com/Abroad-Portal-and-Communities/website/edit/main/content
 
   # Giscus (GitHub Discussions). Enable per page with `comments: true` in front matter.
   # IDs from https://giscus.app — repo must have Discussions on and the giscus GitHub App installed.
