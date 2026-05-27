@@ -25,3 +25,4 @@ Examples:
 - [ ] PR title follows Conventional Commits (e.g. `feat: …`, `fix: …`)
 - [ ] Site builds locally (`hugo server`)
 - [ ] Lint workflow passes (Hugo build, Markdown)
+- [ ] **Pages** deploy check shows a preview URL (pull requests only)
