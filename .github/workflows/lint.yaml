@@ -27,7 +27,7 @@ jobs:
       hugo: ${{ steps.filter.outputs.hugo }}
       markdown: ${{ steps.filter.outputs.markdown }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -59,7 +59,7 @@ jobs:
     env:
       HUGO_CACHEDIR: /tmp/hugo_cache
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
@@ -91,7 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
           sparse-checkout: |
