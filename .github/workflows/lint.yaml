@@ -99,7 +99,7 @@ jobs:
             README.md
             .markdownlint.yaml
 
-      - uses: DavidAnson/markdownlint-cli2-action@v24.1.0
+      - uses: DavidAnson/markdownlint-cli2-action@v24.2.0
         with:
           config: .markdownlint.yaml
           globs: |
